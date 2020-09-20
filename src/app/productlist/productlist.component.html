@@ -1,0 +1,19 @@
+<div *ngIf="productList">
+    <p>Product List</p>
+    <ul class="product-list">
+        <ng-container *ngFor="let product of productList">
+            <li class="product-list__item" *ngIf="product.productName && product.productId">
+                {{product.productName}}
+                <button class=" product-list__add" [disabled]="product.availableQuantity === 0"
+                    (click)="addToCart(product)" tabindex="0">
+                    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" /></svg>
+                </button>
+            </li>
+        </ng-container>
+    </ul>
+</div>
+<div *ngIf="!productList">
+    Fetching Products...
+</div>

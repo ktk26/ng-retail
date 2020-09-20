@@ -1,0 +1,20 @@
+.product-list {
+  list-style-type: none;
+  display: inline-block;
+
+  .product-list__item {
+    width: 100%;
+    padding: 10px;
+    float: left;
+    border-bottom: 2px solid #8d8d8d;
+  }
+
+  .product-list__add {
+    float: right;
+    cursor: pointer;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

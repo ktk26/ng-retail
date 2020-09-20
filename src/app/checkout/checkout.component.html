@@ -1,0 +1,10 @@
+<div *ngIf="product && !orderSuccess" class="checkout">
+    Added Product: {{product.productName}}
+    <button (click)="placeOrder()">Place Order</button>
+</div>
+<div *ngIf="!product">
+    Adding Product...
+</div>
+<div *ngIf="orderSuccess">
+    Order Placed Successfully
+</div>
