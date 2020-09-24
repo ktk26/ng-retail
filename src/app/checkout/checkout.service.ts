@@ -13,9 +13,12 @@ export class CheckoutService {
         return uuidv4();
     }
 
-    placeOrder() {
-        let order = this.product;
+    placeOrder(quantity) {
+        let order = {};
         order["orderId"] = this.generateUUID();
+        order["quantity"] = quantity;
+        order["productId"] = this.product.productId;
+        order["customerId"] = this.generateUUID();
         return this.http.post(ORDER_URL, order);
     }
 }

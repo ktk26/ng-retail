@@ -1,10 +1,19 @@
 <div *ngIf="product && !orderSuccess" class="checkout">
-    Added Product: {{product.productName}}
-    <button (click)="placeOrder()">Place Order</button>
+    Added Product: <strong>{{product.productName}}</strong>
+    <form (submit)="placeOrder(quantity.value)">
+        <div class="form-group">
+            <label for="order-quantity">Quantity: </label>
+            <input #quantity class="input-quantity" value="1" id="order-quantity" type="number" min="1"
+                [attr.max]="product.availableQuantity" oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                required />
+            <span> of {{product.availableQuantity}}</span>
+        </div>
+        <button type="submit">Place Order</button>
+    </form>
 </div>
 <div *ngIf="!product">
     Adding Product...
 </div>
-<div *ngIf="orderSuccess">
+<div class="order-success" *ngIf="orderSuccess">
     Order Placed Successfully
 </div>

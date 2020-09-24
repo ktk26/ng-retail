@@ -11,13 +11,18 @@ import { Router } from '@angular/router';
 export class CheckoutComponent implements OnInit {
     product: any;
     orderSuccess = false;
+    orderPlaced = false;
 
     constructor(private checkoutService: CheckoutService, private router: Router) { }
-    placeOrder() {
-        this.checkoutService.placeOrder()
+    placeOrder(quantity) {
+        this.orderPlaced = false;
+        this.orderSuccess = false;
+        this.checkoutService.placeOrder(parseInt(quantity))
             .subscribe((data) => {
                 this.orderSuccess = true;
+                this.orderPlaced = true;
             });
+        return false;
     }
 
     ngOnInit() {

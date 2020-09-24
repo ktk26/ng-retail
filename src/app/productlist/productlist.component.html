@@ -1,6 +1,6 @@
 <div *ngIf="productList">
     <p>Product List</p>
-    <ul class="product-list">
+    <div class="product-list">
         <ng-container *ngFor="let product of productList">
             <li class="product-list__item" *ngIf="product.productName && product.productId">
                 {{product.productName}}
@@ -12,7 +12,7 @@
                 </button>
             </li>
         </ng-container>
-    </ul>
+    </div>
 </div>
 <div *ngIf="!productList">
     Fetching Products...
